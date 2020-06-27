@@ -1,4 +1,4 @@
-var Mouse = require('Mouse');
+var Mouse = require('./Mouse');
 
 function Cats() {
 	this.stomach = [];
@@ -6,10 +6,11 @@ function Cats() {
 
 Cats.prototype.eat = function(animal){
 	if (animal instanceof Mouse){
+		animal.die();
 		this.stomach.push(animal);
 	}else {
-		console.log('Cat can only mouse!');
+		throw new Error('Cat can only mouse!');
 	}
-}
+};
 
 module.exports = Cats;
